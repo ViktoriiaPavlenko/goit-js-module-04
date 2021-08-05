@@ -125,3 +125,33 @@ function getSum(arr) {
 
 // ------- Call Stack (стек вызовов)
 // LIFO - last in first out
+
+
+// ------- Замыкание (closure)
+
+// CLOSURE - способность функции использовать переменные из области,
+// где она была объявлена
+
+
+function changeColor() {
+  let color = 'green'
+
+  function getNewColor(value) {
+    console.log(color)
+
+    return (color = value)
+  }
+  function resetColor() {
+    return (color = 'green')
+  }
+  return { getNewColor, resetColor }
+}
+
+const x = changeColor()
+// let color = x('red')
+// console.log(color)
+let color = x.getNewColor('black')
+color = x.getNewColor('blue')
+
+color = x.resetColor()
+// console.log(color)
